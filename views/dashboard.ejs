@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<!-- title & meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+		<title>Dashboard</title>
+
+		<!-- link and scripts -->
+		<link rel="stylesheet" href="css/loader.css">
+		<link rel="stylesheet" href="css/dashboard.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+		<!-- preloader -->
+		<div defer id="loader-wrapper" class="loader-wrapper">
+		<span class="loader"></span>
+		</div>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!--header menu start-->
+			<div class="header">
+				<div class="header-menu">
+					<div class="title">Profile <span>Page</span></div>
+					<div class="sidebar-btn">
+						<i class="fas fa-bars"></i>
+					</div>
+					<ul>
+						<li><a href="#"><i class="fas fa-bell"></i></a></li>
+						<li><a onclick="singOut()"><i class="fas fa-power-off"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!--sidebar start-->
+			<div class="sidebar">
+				<div class="sidebar-menu">
+					<center class="profile">
+						<img src="https://avatars2.githubusercontent.com/u/43845224?s=400&u=246b5f57a1f90d20e0743874501e35231bbf6855&v=4" alt="">
+						<!-- <p>data</p> -->
+					</center>
+					<li class="item">
+						<a href="#" onclick="menuclick('courses');loadCourses();" class="menu-btn">
+							<i class="fas fa-desktop"></i><span>Dashboard</span>
+						</a>
+					</li>
+					<li class="item" id="Courses">
+						<a href="#Courses" class="menu-btn">
+							<i class="fas fa-envelope"></i><span>Courses<i class="fas fa-chevron-down drop-down"></i></span>
+						</a>
+						<div class="sub-menu">
+							<a onclick="menuclick('addcourse')"><i class="fas fa-envelope"></i><span>New</span></a>
+							<a onclick="menuclick('courses');loadCourses();"><i class="fas fa-envelope-square"></i><span>Uploaded</span></a>
+						</div>
+					</li>
+					<li class="item" id="profile">
+						<a href="#profile" onclick="menuclick('proflie');loadprofile()" class="menu-btn">
+							<i class="fas fa-user-circle"></i><span>Profile</span>
+						</a>
+					</li>
+					<li class="item">
+						<a href="#" onclick="menuclick('about')" class="menu-btn">
+							<i class="fas fa-info-circle"></i><span>About</span>
+						</a>
+					</li>
+				</div>
+			</div>
+
+			<!--main container start-->
+			<div id="content-conatiner" class="main-container">
+				<div id="addcourse" class="menu-ccontainers d-none">
+					<div onclick="btnclick('courseimage')" class="form-group row">
+						<label for="firstname" class="col-md-2 col-form-label">Upload Research Paper </label>
+						<div class="col-md-10">
+							<input id="courseimage" class="d-none" type="file" accept="image/x-png,image/jpeg">
+							<button id='courseframe' class="imageframe">Click to upload Image</button>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2 col-form-label">Abstract</label>
+						<div class="col-md-10">
+							<input id="coursename" type="text" class="form-control">
+						</div>
+					</div>
+				
+					<div class="form-group row">
+						<label class="col-md-2 col-form-label">Innovation</label>
+						<div class="col-md-10">
+							<input id="coursedescription" type="text" class="form-control">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-1 col-form-label">Conference Category</label>
+						<div class="col-md-3 offset-md-1">
+							<select class="form-control" id="catagory" >
+								<option value="Paper">Types of Conference</option>
+								<option value="Paper">Workshop</option>
+								<option value="programing">Conclave</option>
+
+							</select>
+						</div>
+					</div>
+				
+					<div class="form-group row">
+						<label class="col-md-2 col-form-label">References</label>
+						<div class="col-md-3">
+							<textarea class="form-control" id="textarea1"></textarea>
+						</div>
+					</div>
+				
+					<div class="form-group row">
+						<div class="offset-md-2 col-md-10">
+							<button onclick="addcourse()" class="btn btn-primary">Add and Update</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="courses" class="menu-ccontainers px-5 py-12">
+
+				</div>
+
+				<div id="proflie" class="menu-ccontainers d-none container-fluid">
+					<div class="row ">
+						<div class="col-md-6">
+							<div class="needs-validation" novalidate>
+								<div class="form-group">
+									<label for="quiz_topic">NAME</label>
+									<input id="name" type="text" class="form-control form-control-lg" required>
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="quiz_topic">USERNAME</label>
+									<input id="uname" type="text" class="form-control form-control-lg" required>
+								</div>
+								<br>
+								<div class="row">
+									<div class="btn-group text-center">
+										<div class="col-4">
+											<button onclick="updateprofile()" type="button" class="btn btn-danger">UPDATE</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="about" class="menu-ccontainers d-none container-fluid">
+					about page
+				</div>
+
+				<div id="courseedit" class="menu-ccontainers d-none container-fluid">
+					<button onclick="menuclick('courses');loadCourses();" class="btn btn-danger">Go Back</button>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<h5>Paper Description</h5>
+								<hr>
+							</div>
+						</div>
+						<div class="row row-content">
+							<div class="col-12 col-md-9">
+					
+								<div id="coursesinsideedit">
+									
+								</div>
+					
+								<hr>
+								<div class="col-12">
+									<h5>Add Pages</h5>
+								</div>
+								<hr>
+					
+								<div id="chapters">
+									
+								</div>
+					
+								<div id="chaptetrbutton" class="form-group row">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<!-- scripts -->
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+		<!-- custom script -->
+		<script src="javascript/authentication.js"></script>
+		<script src="javascript/firebasedatabase.js"></script>
+		<script	src="javascript/dashboard.js"></script>
+
+		<!-- preloader and ui -->
+		<script type="text/javascript">
+			window.onload = function (e) {
+				document.getElementById("loader-wrapper").style.animation = "loader-wrapper 1s linear forwards";
+				loadCourses();
+			}
+
+			document.getElementsByClassName('sidebar-btn')[0].onclick = () => {
+				document.getElementsByClassName('wrapper')[0].classList.toggle('ccollapse');
+			}
+
+			function menuclick(id){
+				var cc = document.getElementsByClassName('menu-ccontainers');
+				for (let i = 0; i < cc.length; i++) {
+					cc[i].classList.add('d-none');
+				}
+				document.getElementById(id).classList.remove('d-none');
+			}
+
+			function btnclick(id){
+				document.getElementById(id).click();
+			}
+			var addcoursepage = document.getElementById("addcourse").innerHTML;
+			var addcoursepageupdate = document.getElementById("courseedit").innerHTML;
+		</script>
+	</body>
+</html>

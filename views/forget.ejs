@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- title & meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>Verification</title>
+
+    <!-- links -->
+	<link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/varification.css">
+
+    <!-- preloader -->
+    <div defer id="loader-wrapper" class="loader-wrapper">
+        <span class="loader"></span>
+    </div>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>Send Rest Email</h1>
+        <input id="email" type="text" name="" value="">
+        <input id="sendreset" onclick="passReset()" type="button" value="SEND">
+    </div>
+
+    <!-- scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+    <!-- custom scripts -->
+    <script src="javascript/authentication.js"></script>
+
+    <!-- ui and preloader -->
+    <script type="text/javascript">
+        window.onload = function (e) {
+            document.getElementById("loader-wrapper").style.animation = "loader-wrapper 1s linear forwards";
+        }
+    </script>
+</body>
+
+</html>

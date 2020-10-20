@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- title & meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+        <title>Verification</title>
+
+        <!-- links -->
+        <link rel="stylesheet" href="css/loader.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+        <!-- preloader -->
+        <div defer id="loader-wrapper" class="loader-wrapper">
+            <span class="loader"></span>
+        </div>
+    </head>
+    <body>
+
+        <div class="mt-10 container h-100 justify-content-center">
+            <div style="margin:0 auto;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="jumbotron">
+                    <div class="form-group">
+                        <label>Verification</label>
+                        <input id="email" disabled placeholder="email" value="<%= data %>" class="form-control">
+                    </div>
+
+                    <div class="btn-group container-fluid">
+                        <input id="sendvarif" onclick="sendVarification()" type="button" value="Send" class="btn btn-primary container">
+                        <input onclick="window.location.assign('/recreate');" type="button" value="Continue"
+                            class="btn btn-secondary container">
+                        <input onclick="singOut()" type="button" value="Logout" class="btn btn-danger container">
+                    </div>
+                </div>
+
+                <div class="jumbotron mr-auto">
+                    <div class="form-group container-fluid">
+                        <label><input id='agrement' disabled onchange="check()" type="checkbox"> i agree with the terms and
+                            conditions to become metor</label>
+                    </div>
+                    <div class=" btn-group container-fluid">
+                        <input disabled onclick="makeadmin()" disabled id="done" type="button" value="Continue" class="btn btn-secondary container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- firebase scripts -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+        <!-- custom script -->
+        <script src="javascript/authentication.js"></script>
+
+        <!-- ui and preloader -->
+        <script>
+            window.onload = function (e) {
+                document.getElementById("loader-wrapper").style.animation = "loader-wrapper 1s linear forwards";
+            }
+        </script>
+    </body>
+</html>

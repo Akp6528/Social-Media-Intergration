@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <!-- title & meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>Ash</title>
+
+    <!-- links -->
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <!-- preloader -->
+    <div defer id="loader-wrapper" class="loader-wrapper">
+        <span class="loader"></span>
+    </div>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <!-- sign up form -->
+        <div class="form-container sign-up-container">
+            <form id="signupform" class="form">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a onclick="singInWithFacebook()" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a onclick="singInWithGoogle()" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a onclick="singInWithGithub()" class="social"><i class="fab fa-github"></i></a>
+                </div>
+
+                <span>or use your email for registration</span>
+
+                <span class="form-control">
+                    <label for="username"></label>
+                    <input required class="form-control" type="text" placeholder="Full Name" id="username" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </span>
+                <span class="form-control">
+                    <label for="username"></label>
+                    <input required type="email" placeholder="Email Id" id="email" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </span>
+                <span class="form-control">
+                    <label for="username"></label>
+                    <input required pattern=".{6,}" type="password" title="six or more characters" placeholder="Password" id="password" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </span>
+                <span class="form-control">
+                    <label for="username"></label>
+                    <input required pattern=".{6,}" type="password" title="six or more characters" placeholder="Re-Password " id="password2" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </span>
+                <button>Submit</button>
+            </form>
+        </div>
+        <!-- login form -->
+        <div class="form-container sign-in-container">
+            <form id="loginform" action="#">
+                <h1>Login</h1>
+                <div class="social-container">
+                    <a onclick="singInWithFacebook()" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a onclick="singInWithGoogle()" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a onclick="singInWithGithub()" class="social"><i class="fab fa-github"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input required id=loginemail type="email" placeholder="Email" />
+                <input required pattern=".{6,}" id="loginpassword" type="password" title="six or more characters" placeholder="Password" />
+                <a style="color: blue; cursor: pointer;" id='one' onclick="window.location.assign('/forget');">Forgot your password?</a>
+                <button>Login</button>
+            </form>
+        </div>
+        <!-- overlay -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected and login with your personal info</p>
+                    <button class="ghost" id="signIn" class="btn btn-danger">Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details</p>
+                    <button class="ghost" id="signUp">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- script -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <!-- custom script -->
+    <script src="javascript/indexinput.js"></script>
+    <script src="javascript/authentication.js"></script>
+    <script src="javascript/firebasedatabase.js"></script>
+ 
+    <!-- ui and preloader -->
+    <script type="text/javascript">
+        window.onload = (e) => {
+            document.getElementById("loader-wrapper").style.animation = "loader-wrapper 1s linear forwards";
+        }
+
+        //get stylinng elements
+        var signUpButton = document.getElementById('signUp');
+        var signInButton = document.getElementById('signIn');
+        var container = document.getElementById('container');
+
+        //stylings
+        signUpButton.onclick = (e)=>{
+            container.classList.add("right-panel-active");
+        };
+
+        signInButton.onclick = (e) => {
+            container.classList.remove("right-panel-active");
+        };
+    </script>
+</body>
+
+</html>
